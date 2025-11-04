@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="ac7b6dc4-f05d-4168-9337-e9634996719b" name="unlearn">
+        <fileTransfer rootFolder="/mnt/dir/wyx" accessType="SFTP" host="186.32.16.50" port="22" sshConfigId="2a48b54c-2c85-496a-aee5-97b2590cb6ba" sshConfig="user@186.32.16.50:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" isUseRsync="true" isUseSudo="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

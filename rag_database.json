@@ -1,0 +1,173 @@
+{
+"entries":
+[
+  {
+    "question": "如何优化催化剂的反应产率？",
+    "workflow": [
+      {
+        "method": "initialize",
+        "params": {
+          "experiment_name": "catalyst_optimization",
+          "parameters": {
+            "temperature": [
+              25,
+              100
+            ],
+            "pressure": [
+              1,
+              5
+            ]
+          }
+        }
+      },
+      {
+        "method": "suggest",
+        "params": {
+          "count": 5
+        }
+      },
+      {
+        "method": "robotic_reaction",
+        "params": {
+          "temperature": 60,
+          "pressure": 3,
+          "catalyst_amount": 0.5
+        }
+      },
+      {
+        "method": "robotic_measurement",
+        "params": {
+          "measurement_type": "yield"
+        }
+      },
+      {
+        "method": "observe",
+        "params": {
+          "parameters": {
+            "temperature": 60,
+            "pressure": 3,
+            "catalyst_amount": 0.5
+          },
+          "result": 85.2
+        }
+      }
+    ],
+    "metadata": {
+      "source": "test_data",
+      "category": "catalyst_optimization"
+    }
+  },
+  {
+    "question": "如何提高合成反应的选择性？",
+    "workflow": [
+      {
+        "method": "initialize",
+        "params": {
+          "experiment_name": "selectivity_improvement",
+          "parameters": {
+            "temperature": [
+              0,
+              50
+            ],
+            "catalyst_ratio": [
+              0.1,
+              1.0
+            ]
+          }
+        }
+      },
+      {
+        "method": "suggest",
+        "params": {
+          "count": 3
+        }
+      },
+      {
+        "method": "robotic_reaction",
+        "params": {
+          "temperature": 25,
+          "catalyst_ratio": 0.7,
+          "solvent": "ethanol"
+        }
+      },
+      {
+        "method": "robotic_measurement",
+        "params": {
+          "measurement_type": "selectivity"
+        }
+      },
+      {
+        "method": "observe",
+        "params": {
+          "parameters": {
+            "temperature": 25,
+            "catalyst_ratio": 0.7,
+            "solvent": "ethanol"
+          },
+          "result": 92.1
+        }
+      }
+    ],
+    "metadata": {
+      "source": "test_data",
+      "category": "selectivity"
+    }
+  },
+  {
+    "question": "如何加速反应动力学？",
+    "workflow": [
+      {
+        "method": "initialize",
+        "params": {
+          "experiment_name": "kinetics_improvement",
+          "parameters": {
+            "temperature": [
+              50,
+              150
+            ],
+            "stirring_rate": [
+              100,
+              1000
+            ]
+          }
+        }
+      },
+      {
+        "method": "suggest",
+        "params": {
+          "count": 4
+        }
+      },
+      {
+        "method": "robotic_reaction",
+        "params": {
+          "temperature": 120,
+          "stirring_rate": 800,
+          "catalyst": "Pd/C"
+        }
+      },
+      {
+        "method": "robotic_measurement",
+        "params": {
+          "measurement_type": "reaction_rate"
+        }
+      },
+      {
+        "method": "observe",
+        "params": {
+          "parameters": {
+            "temperature": 120,
+            "stirring_rate": 800,
+            "catalyst": "Pd/C"
+          },
+          "result": 0.056
+        }
+      }
+    ],
+    "metadata": {
+      "source": "test_data",
+      "category": "kinetics"
+    }
+  }
+]
+}
