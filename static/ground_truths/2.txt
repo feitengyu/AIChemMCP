@@ -1,0 +1,10 @@
+物料拿取 starting_station
+液体进样站 liquid_dispensing
+磁力搅拌 magnetic_stirring
+烘干
+离心纯化 gn_centrifugation_workstation
+液体进样站 liquid_dispensing
+磁力搅拌 magnetic_stirring
+超声清洗 ultrasonic_cleaning 
+电化学检测 high_throughput_advanced_material_screening_workstation 
+物料回收 elec_chem_storage_workstation

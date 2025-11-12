@@ -1,0 +1,17 @@
+物料拿取 starting_station
+开盖
+液体加样 liquid_dispensing
+磁力搅拌 magnetic_stirring
+超声清洗 ultrasonic_cleaning
+烘干
+离心纯化 gn_centrifugation_workstation
+磁力搅拌 magnetic_stirring
+离心纯化 gn_centrifugation_workstation
+磁力搅拌 magnetic_stirring
+离心纯化 gn_centrifugation_workstation
+烘干
+开盖
+容器中转 transfer_workstation
+紫外光谱进样绘图
+荧光光谱进样绘图
+物料回收 elec_chem_storage_workstation
