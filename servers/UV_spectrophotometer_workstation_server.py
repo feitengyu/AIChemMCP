@@ -1,7 +1,7 @@
 import sys
 import json
 # 动态导入当前设备对应的工具类（与主服务器文件同目录）
-from tools.UV_spectrophotometer_workstation_server_tools import ActionServerTools
+from UV_spectrophotometer_workstation_server_tools import ActionServerTools
 
 
 # 创建全局工具管理器实例
@@ -37,6 +37,10 @@ def tool_light_on(**params):
     return tool_manager.tool_light_on(**params)
 
 
+def tool_light_off(**params):
+    return tool_manager.tool_light_off(**params)
+
+
 
 AVAILABLE_TOOLS_ACTION = {
     "setup": tool_setup,
@@ -45,7 +49,8 @@ AVAILABLE_TOOLS_ACTION = {
     "uv_reset": tool_uv_reset,
     "uv_start": tool_uv_start,
     "uv_waste": tool_uv_waste,
-    "light_on": tool_light_on
+    "light_on": tool_light_on,
+    "light_off": tool_light_off
 }
 
 
@@ -199,6 +204,20 @@ def UV_spectrophotometer_workstation_server_advertise_capabilities():
         {
             "name": "light_on",
             "description": "紫外开灯",
+            "parameters": {
+                "type": "object",
+                "properties": {
+    "operation": {
+        "type": "string",
+        "description": "操作符"
+    }
+},
+                "required": ["operation"]
+            }
+        },
+        {
+            "name": "light_off",
+            "description": "紫外关灯",
             "parameters": {
                 "type": "object",
                 "properties": {

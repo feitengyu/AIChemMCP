@@ -1,7 +1,7 @@
 import sys
 import json
 # 动态导入当前设备对应的工具类（与主服务器文件同目录）
-from tools.ALDWorkstation_server_tools import ActionServerTools
+from ALDWorkstation_server_tools import ActionServerTools
 
 
 # 创建全局工具管理器实例
@@ -105,20 +105,16 @@ def tool_writeEnableOzoneSwitch(**params):
     return tool_manager.tool_writeEnableOzoneSwitch(**params)
 
 
-def tool_loadRecipeStart(**params):
-    return tool_manager.tool_loadRecipeStart(**params)
+def tool_openDoorAld(**params):
+    return tool_manager.tool_openDoorAld(**params)
 
 
 def tool_closeDoorAld(**params):
     return tool_manager.tool_closeDoorAld(**params)
 
 
-def tool_openDoorAld(**params):
-    return tool_manager.tool_openDoorAld(**params)
-
-
-def tool_downloadFile(**params):
-    return tool_manager.tool_downloadFile(**params)
+def tool_loadRecipeStart(**params):
+    return tool_manager.tool_loadRecipeStart(**params)
 
 
 
@@ -147,10 +143,9 @@ AVAILABLE_TOOLS_ACTION = {
     "loadRecipe": tool_loadRecipe,
     "writeVent": tool_writeVent,
     "writeEnableOzoneSwitch": tool_writeEnableOzoneSwitch,
-    "loadRecipeStart": tool_loadRecipeStart,
-    "closeDoorAld": tool_closeDoorAld,
     "openDoorAld": tool_openDoorAld,
-    "downloadFile": tool_downloadFile
+    "closeDoorAld": tool_closeDoorAld,
+    "loadRecipeStart": tool_loadRecipeStart
 }
 
 
@@ -930,8 +925,8 @@ def ALDWorkstation_server_advertise_capabilities():
             }
         },
         {
-            "name": "loadRecipeStart",
-            "description": "总体的加载recipe使能 并运行使能",
+            "name": "openDoorAld",
+            "description": "ALD设备 调用开启舱门的recipe使能",
             "parameters": {
                 "type": "object",
                 "properties": {
@@ -954,13 +949,9 @@ def ALDWorkstation_server_advertise_capabilities():
     "recipeName": {
         "type": "string",
         "description": "recipeName"
-    },
-    "minute": {
-        "type": "int",
-        "description": "minute"
     }
 },
-                "required": ["chainName", "ifAsynchronous", "sn", "method", "recipeName", "minute"]
+                "required": ["chainName", "ifAsynchronous", "sn", "method", "recipeName"]
             }
         },
         {
@@ -994,8 +985,8 @@ def ALDWorkstation_server_advertise_capabilities():
             }
         },
         {
-            "name": "openDoorAld",
-            "description": "ALD设备 调用开启舱门的recipe使能",
+            "name": "loadRecipeStart",
+            "description": "总体的加载recipe使能 并运行使能",
             "parameters": {
                 "type": "object",
                 "properties": {
@@ -1018,47 +1009,13 @@ def ALDWorkstation_server_advertise_capabilities():
     "recipeName": {
         "type": "string",
         "description": "recipeName"
+    },
+    "minute": {
+        "type": "int",
+        "description": "minute"
     }
 },
-                "required": ["chainName", "ifAsynchronous", "sn", "method", "recipeName"]
-            }
-        },
-        {
-            "name": "downloadFile",
-            "description": "从平台接收脚本文件下载到本地",
-            "parameters": {
-                "type": "object",
-                "properties": {
-    "chainName": {
-        "type": "string",
-        "description": "chainName"
-    },
-    "ifAsynchronous": {
-        "type": "boolean",
-        "description": "ifAsynchronous"
-    },
-    "sn": {
-        "type": "string",
-        "description": "sn"
-    },
-    "method": {
-        "type": "string",
-        "description": "method"
-    },
-    "fileUrl": {
-        "type": "file",
-        "description": "文件地址"
-    },
-    "fileType": {
-        "type": "string",
-        "description": "文件类型"
-    },
-    "savePath": {
-        "type": "string",
-        "description": "本地保存路径"
-    }
-},
-                "required": ["chainName", "ifAsynchronous", "sn", "method", "fileUrl", "fileType", "savePath"]
+                "required": ["chainName", "ifAsynchronous", "sn", "method", "recipeName", "minute"]
             }
         }
                     ]

@@ -1,7 +1,7 @@
 import sys
 import json
 # 动态导入当前设备对应的工具类（与主服务器文件同目录）
-from tools.magnetic_stirring_server_tools import ActionServerTools
+from magnetic_stirring_server_tools import ActionServerTools
 
 
 # 创建全局工具管理器实例
@@ -9,13 +9,13 @@ tool_manager = ActionServerTools()
 
 
 # --- 定义设备动作函数（自动生成，与工具类方法对应）---
-def tool_start(**params):
-    return tool_manager.tool_start(**params)
+def tool_mixing_time(**params):
+    return tool_manager.tool_mixing_time(**params)
 
 
 
 AVAILABLE_TOOLS_ACTION = {
-    "start": tool_start
+    "mixing_time": tool_mixing_time
 }
 
 
@@ -79,25 +79,21 @@ def magnetic_stirring_server_advertise_capabilities():
                 "capabilities": {
                     "tools": [
         {
-            "name": "start",
-            "description": "开始",
+            "name": "mixing_time",
+            "description": "磁力搅拌",
             "parameters": {
                 "type": "object",
                 "properties": {
-    "time": {
+    "mixing_time": {
         "type": "int",
-        "description": "时间（s）"
+        "description": "搅拌时间（分）"
     },
-    "temperature": {
-        "type": "float",
-        "description": "温度"
-    },
-    "speed": {
-        "type": "float",
-        "description": "速度"
+    "operation": {
+        "type": "string",
+        "description": "操作命令"
     }
 },
-                "required": []
+                "required": ["mixing_time", "operation"]
             }
         }
                     ]

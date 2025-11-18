@@ -1,7 +1,7 @@
 import sys
 import json
 # 动态导入当前设备对应的工具类（与主服务器文件同目录）
-from battery_assemble_workstation_server_tools import ActionServerTools
+from microplate_reader_303_server_tools import ActionServerTools
 
 
 # 创建全局工具管理器实例
@@ -9,23 +9,28 @@ tool_manager = ActionServerTools()
 
 
 # --- 定义设备动作函数（自动生成，与工具类方法对应）---
-def tool_dispensing(**params):
-    return tool_manager.tool_dispensing(**params)
+def tool_start(**params):
+    return tool_manager.tool_start(**params)
 
 
-def tool_assemble(**params):
-    return tool_manager.tool_assemble(**params)
+def tool_open(**params):
+    return tool_manager.tool_open(**params)
+
+
+def tool_close(**params):
+    return tool_manager.tool_close(**params)
 
 
 
 AVAILABLE_TOOLS_ACTION = {
-    "dispensing": tool_dispensing,
-    "assemble": tool_assemble
+    "start": tool_start,
+    "open": tool_open,
+    "close": tool_close
 }
 
 
 # --- MCP协议通信主逻辑（自动适配当前设备）---
-def battery_assemble_workstation_server_main_loop():
+def microplate_reader_303_server_main_loop():
     """主循环：监听并响应Host的MCP协议请求"""
     for line in sys.stdin:
         try:
@@ -68,10 +73,10 @@ def battery_assemble_workstation_server_main_loop():
                 "id": request.get("id")
             }
             print(json.dumps(response, ensure_ascii=False), flush=True)
-            print(f"--- [battery_assemble_workstation_Server] Critical Error: {str(e)} ---", file=sys.stderr, flush=True)
+            print(f"--- [microplate_reader_303_Server] Critical Error: {str(e)} ---", file=sys.stderr, flush=True)
 
 
-def battery_assemble_workstation_server_advertise_capabilities():
+def microplate_reader_303_server_advertise_capabilities():
     """广播当前设备的MCP能力（设备信息、支持的动作）"""
     adv_message = {
         "jsonrpc": "2.0",
@@ -80,96 +85,74 @@ def battery_assemble_workstation_server_advertise_capabilities():
             "type": "server",
             "server": {
                 "protocolVersion": "0.1.0",
-                "displayName": "扣电工作站",
+                "displayName": "酶标仪303谱学",
                 "capabilities": {
                     "tools": [
         {
-            "name": "dispensing",
-            "description": "电池配液",
+            "name": "start",
+            "description": "开始酶标仪测试",
             "parameters": {
                 "type": "object",
                 "properties": {
-    "recipes": {
-        "type": "array",
-        "description": "组装配方",
+    "operation": {
+        "type": "string",
+        "description": "操作符"
+    },
+    "template": {
+        "type": "object",
+        "description": "模板文件选择",
         "properties": {
-            "startNo": {
-                "type": "int",
-                "description": "起始电池编号"
-            },
-            "endNo": {
-                "type": "int",
-                "description": "截止电池编号"
-            },
-            "recipeCode": {
+            "template": {
                 "type": "string",
-                "description": "配方编号"
-            },
-            "recipeName": {
-                "type": "string",
-                "description": "配方名称"
+                "description": "value"
             }
         },
         "required": [
-            "startNo",
-            "endNo",
-            "recipeCode"
+            "template"
         ]
     },
-    "recipes.startNo": {
-        "type": "int",
-        "description": "起始电池编号"
-    },
-    "recipes.endNo": {
-        "type": "int",
-        "description": "截止电池编号"
-    },
-    "recipes.recipeCode": {
+    "template.template": {
         "type": "string",
-        "description": "配方编号"
+        "description": "value"
     },
-    "recipes.recipeName": {
+    "result_file": {
         "type": "string",
-        "description": "配方名称"
-    },
-    "isConductionTest": {
-        "type": "boolean",
-        "description": "是否测试电导",
-        "enum": [
-            {
-                "label": "是",
-                "value": "true"
-            },
-            {
-                "label": "否",
-                "value": "false"
-            }
-        ]
-    },
-    "aluminiumFlakeCount": {
-        "type": "int",
-        "description": "铝片数量"
+        "description": "结果文件名"
     },
     "resultCode": {
         "type": "file",
         "description": "resultCode"
     }
 },
-                "required": ["recipes", "recipes.startNo", "recipes.endNo", "recipes.recipeCode", "isConductionTest"]
+                "required": ["operation", "template.template", "result_file", "resultCode"]
             }
         },
         {
-            "name": "assemble",
-            "description": "电池组装",
+            "name": "open",
+            "description": "打开舱门",
             "parameters": {
                 "type": "object",
                 "properties": {
-    "resultCode": {
-        "type": "file",
-        "description": "resultCode"
+    "operation": {
+        "type": "string",
+        "description": "操作符"
     }
 },
-                "required": []
+                "required": ["operation"]
+            }
+        },
+        {
+            "name": "close",
+            "description": "关闭舱门",
+            "parameters": {
+                "type": "object",
+                "properties": {
+    "operation": {
+        "type": "string",
+        "description": "操作符"
+    }
+},
+                "required": ["operation"]
             }
         }
                     ]
@@ -178,10 +161,10 @@ def battery_assemble_workstation_server_advertise_capabilities():
         }
     }
     print(json.dumps(adv_message, ensure_ascii=False), flush=True)
-    print(f"--- [battery_assemble_workstation_Server] 扣电工作站 is ready. ---", file=sys.stderr, flush=True)
+    print(f"--- [microplate_reader_303_Server] 酶标仪303谱学 is ready. ---", file=sys.stderr, flush=True)
 
 
 if __name__ == "__main__":
     # 启动流程：先广播能力，再进入主循环
-    battery_assemble_workstation_server_advertise_capabilities()
-    battery_assemble_workstation_server_main_loop()
+    microplate_reader_303_server_advertise_capabilities()
+    microplate_reader_303_server_main_loop()

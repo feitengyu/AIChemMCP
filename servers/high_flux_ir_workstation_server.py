@@ -1,7 +1,7 @@
 import sys
 import json
 # 动态导入当前设备对应的工具类（与主服务器文件同目录）
-from tools.high_flux_ir_workstation_server_tools import ActionServerTools
+from high_flux_ir_workstation_server_tools import ActionServerTools
 
 
 # 创建全局工具管理器实例
@@ -29,13 +29,23 @@ def tool_confirm_tip_position(**params):
     return tool_manager.tool_confirm_tip_position(**params)
 
 
+def tool_online(**params):
+    return tool_manager.tool_online(**params)
+
+
+def tool_auto_confirm_tip_position(**params):
+    return tool_manager.tool_auto_confirm_tip_position(**params)
+
+
 
 AVAILABLE_TOOLS_ACTION = {
     "start_check": tool_start_check,
     "prefix_operate": tool_prefix_operate,
     "collect_sample_back": tool_collect_sample_back,
     "sleep": tool_sleep,
-    "confirm_tip_position": tool_confirm_tip_position
+    "confirm_tip_position": tool_confirm_tip_position,
+    "online": tool_online,
+    "auto_confirm_tip_position": tool_auto_confirm_tip_position
 }
 
 
@@ -125,9 +135,13 @@ def high_flux_ir_workstation_server_advertise_capabilities():
     "operation": {
         "type": "string",
         "description": "操作指令"
+    },
+    "drip_volume": {
+        "type": "int",
+        "description": "滴液体积"
     }
 },
-                "required": ["operation"]
+                "required": ["operation", "drip_volume"]
             }
         },
         {
@@ -174,12 +188,44 @@ def high_flux_ir_workstation_server_advertise_capabilities():
     },
     "position": {
         "type": "int",
-        "description": "当前使用的tip头位置（1-48）",
+        "description": "当前可用tip头起始位置（1-96）",
         "minimum": "1",
-        "maximum": "48"
+        "maximum": "96"
+    },
+    "type": {
+        "type": "int",
+        "description": "确认类型"
     }
 },
-                "required": ["operation", "position"]
+                "required": ["operation", "position", "type"]
+            }
+        },
+        {
+            "name": "online",
+            "description": "强制上线",
+            "parameters": {
+                "type": "object",
+                "properties": {
+    "operation": {
+        "type": "string",
+        "description": "参数 operation"
+    }
+},
+                "required": ["operation"]
+            }
+        },
+        {
+            "name": "auto_confirm_tip_position",
+            "description": "自动确认tip头位置",
+            "parameters": {
+                "type": "object",
+                "properties": {
+    "operation": {
+        "type": "string",
+        "description": "操作指令"
+    }
+},
+                "required": ["operation"]
             }
         }
                     ]

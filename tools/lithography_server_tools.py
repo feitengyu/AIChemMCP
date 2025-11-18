@@ -1,7 +1,7 @@
 """
 lithography 设备工具类
 功能：定义设备所有动作的工具方法接口，需手动实现具体逻辑
-生成时间：2025-09-03 11:00:48
+生成时间：2025-11-07 19:42:38
 """
 
 class ActionServerTools:
@@ -54,9 +54,3 @@ class ActionServerTools:
     def tool_open_door(self, **params):
         """开门（动作标识：open_door）- 需实现具体逻辑"""
         raise NotImplementedError(f"未实现 开门(open_door) 的工具逻辑")
-    def tool_get_stage_position(self, **params):
-        """获取样品台位置（动作标识：get_stage_position）- 需实现具体逻辑"""
-        raise NotImplementedError(f"未实现 获取样品台位置(get_stage_position) 的工具逻辑")
-    def tool_get_move_steps(self, **params):
-        """获取移动信息（动作标识：get_move_steps）- 需实现具体逻辑"""
-        raise NotImplementedError(f"未实现 获取移动信息(get_move_steps) 的工具逻辑")

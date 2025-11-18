@@ -1,7 +1,7 @@
 import sys
 import json
 # 动态导入当前设备对应的工具类（与主服务器文件同目录）
-from tools.ultrasonic_cleaning_server_tools import ActionServerTools
+from ultrasonic_cleaning_server_tools import ActionServerTools
 
 
 # 创建全局工具管理器实例
@@ -17,10 +17,6 @@ def tool_drain_water(**params):
     return tool_manager.tool_drain_water(**params)
 
 
-def tool_start_clean(**params):
-    return tool_manager.tool_start_clean(**params)
-
-
 def tool_stop_clean(**params):
     return tool_manager.tool_stop_clean(**params)
 
@@ -33,14 +29,18 @@ def tool_close_heat(**params):
     return tool_manager.tool_close_heat(**params)
 
 
+def tool_start_clean(**params):
+    return tool_manager.tool_start_clean(**params)
+
+
 
 AVAILABLE_TOOLS_ACTION = {
     "add-water": tool_add_water,
     "drain-water": tool_drain_water,
-    "start_clean": tool_start_clean,
     "stop_clean": tool_stop_clean,
     "open-heat": tool_open_heat,
-    "close-heat": tool_close_heat
+    "close-heat": tool_close_heat,
+    "start_clean": tool_start_clean
 }
 
 
@@ -109,7 +109,7 @@ def ultrasonic_cleaning_server_advertise_capabilities():
             "parameters": {
                 "type": "object",
                 "properties": {
-    "op": {
+    "operation": {
         "type": "string",
         "description": "操作符"
     },
@@ -118,7 +118,7 @@ def ultrasonic_cleaning_server_advertise_capabilities():
         "description": "加水时间（单位：秒）"
     }
 },
-                "required": ["op", "value"]
+                "required": ["operation", "value"]
             }
         },
         {
@@ -127,7 +127,7 @@ def ultrasonic_cleaning_server_advertise_capabilities():
             "parameters": {
                 "type": "object",
                 "properties": {
-    "op": {
+    "operation": {
         "type": "string",
         "description": "操作符"
     },
@@ -136,7 +136,61 @@ def ultrasonic_cleaning_server_advertise_capabilities():
         "description": "排水时间（单位：秒）"
     }
 },
-                "required": ["op", "value"]
+                "required": ["operation", "value"]
+            }
+        },
+        {
+            "name": "stop_clean",
+            "description": "停⽌超声清洗",
+            "parameters": {
+                "type": "object",
+                "properties": {
+    "operation": {
+        "type": "string",
+        "description": "操作符"
+    },
+    "value": {
+        "type": "int",
+        "description": "数值"
+    }
+},
+                "required": ["operation", "value"]
+            }
+        },
+        {
+            "name": "open-heat",
+            "description": "开启加热",
+            "parameters": {
+                "type": "object",
+                "properties": {
+    "operation": {
+        "type": "string",
+        "description": "操作符"
+    },
+    "value": {
+        "type": "int",
+        "description": "数值"
+    }
+},
+                "required": ["operation", "value"]
+            }
+        },
+        {
+            "name": "close-heat",
+            "description": "停⽌加热",
+            "parameters": {
+                "type": "object",
+                "properties": {
+    "operation": {
+        "type": "string",
+        "description": "操作符"
+    },
+    "value": {
+        "type": "int",
+        "description": "数值"
+    }
+},
+                "required": ["operation", "value"]
             }
         },
         {
@@ -149,66 +203,12 @@ def ultrasonic_cleaning_server_advertise_capabilities():
         "type": "int",
         "description": "清洗时间（单位：秒）"
     },
-    "op": {
+    "operation": {
         "type": "string",
         "description": "操作"
     }
 },
-                "required": ["value", "op"]
-            }
-        },
-        {
-            "name": "stop_clean",
-            "description": "停⽌超声清洗",
-            "parameters": {
-                "type": "object",
-                "properties": {
-    "op": {
-        "type": "string",
-        "description": "操作符"
-    },
-    "value": {
-        "type": "int",
-        "description": "数值"
-    }
-},
-                "required": ["op", "value"]
-            }
-        },
-        {
-            "name": "open-heat",
-            "description": "开启加热",
-            "parameters": {
-                "type": "object",
-                "properties": {
-    "op": {
-        "type": "string",
-        "description": "操作符"
-    },
-    "value": {
-        "type": "int",
-        "description": "数值"
-    }
-},
-                "required": ["op", "value"]
-            }
-        },
-        {
-            "name": "close-heat",
-            "description": "停⽌加热",
-            "parameters": {
-                "type": "object",
-                "properties": {
-    "op": {
-        "type": "string",
-        "description": "操作符"
-    },
-    "value": {
-        "type": "int",
-        "description": "数值"
-    }
-},
-                "required": ["op", "value"]
+                "required": ["value", "operation"]
             }
         }
                     ]

@@ -1,7 +1,7 @@
 import sys
 import json
 # 动态导入当前设备对应的工具类（与主服务器文件同目录）
-from tools.spraying_workstation_server_tools import ActionServerTools
+from spraying_workstation_server_tools import ActionServerTools
 
 
 # 创建全局工具管理器实例
@@ -9,13 +9,11 @@ tool_manager = ActionServerTools()
 
 
 # --- 定义设备动作函数（自动生成，与工具类方法对应）---
-def tool_start_atomize(**params):
-    return tool_manager.tool_start_atomize(**params)
 
 
 
 AVAILABLE_TOOLS_ACTION = {
-    "start_atomize": tool_start_atomize
+
 }
 
 
@@ -78,20 +76,7 @@ def spraying_workstation_server_advertise_capabilities():
                 "displayName": "喷涂工作站",
                 "capabilities": {
                     "tools": [
-        {
-            "name": "start_atomize",
-            "description": "开始喷涂",
-            "parameters": {
-                "type": "object",
-                "properties": {
-    "operation": {
-        "type": "string",
-        "description": "操作指令"
-    }
-},
-                "required": ["operation"]
-            }
-        }
+
                     ]
                 }
             }

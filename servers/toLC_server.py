@@ -1,7 +1,7 @@
 import sys
 import json
 # 动态导入当前设备对应的工具类（与主服务器文件同目录）
-from tools.toLC_server_tools import ActionServerTools
+from toLC_server_tools import ActionServerTools
 
 
 # 创建全局工具管理器实例
@@ -9,18 +9,13 @@ tool_manager = ActionServerTools()
 
 
 # --- 定义设备动作函数（自动生成，与工具类方法对应）---
-def tool_to_LC(**params):
-    return tool_manager.tool_to_LC(**params)
-
-
-def tool_from_liquid_chromatography_to_mass_spectrometry(**params):
-    return tool_manager.tool_from_liquid_chromatography_to_mass_spectrometry(**params)
+def tool_start_pure(**params):
+    return tool_manager.tool_start_pure(**params)
 
 
 
 AVAILABLE_TOOLS_ACTION = {
-    "to_LC": tool_to_LC,
-    "from_liquid_chromatography_to_mass_spectrometry": tool_from_liquid_chromatography_to_mass_spectrometry
+    "start_pure": tool_start_pure
 }
 
 
@@ -84,55 +79,136 @@ def toLC_server_advertise_capabilities():
                 "capabilities": {
                     "tools": [
         {
-            "name": "to_LC",
-            "description": "启动进样并开始液相色谱指令",
+            "name": "start_pure",
+            "description": "开始纯化",
             "parameters": {
                 "type": "object",
                 "properties": {
-    "data": {
+    "cmd": {
         "type": "string",
-        "description": "data"
+        "description": "操作指令"
     },
-    "temp": {
-        "type": "int",
-        "description": "temp"
-    },
-    "resultCode": {
-        "type": "file",
-        "description": "resultCode"
-    },
-    "usedTime": {
-        "type": "int",
-        "description": "使用时长(s)"
-    },
-    "first": {
-        "type": "boolean",
-        "description": "first"
-    }
-},
-                "required": ["data", "temp", "first"]
+    "others": {
+        "type": "array",
+        "description": "参数",
+        "properties": {
+            "fileName": {
+                "type": "string",
+                "description": "fileName"
+            },
+            "sampleLocation": {
+                "type": "string",
+                "description": "sampleLocation"
+            },
+            "injVol": {
+                "type": "float",
+                "description": "injVol"
+            },
+            "inletFile": {
+                "type": "string",
+                "description": "inletFile"
+            },
+            "msFile": {
+                "type": "string",
+                "description": "msFile"
+            },
+            "fractionFile": {
+                "type": "string",
+                "description": "fractionFile"
+            },
+            "wavelengthA": {
+                "type": "float",
+                "description": "wavelengthA"
+            },
+            "massA": {
+                "type": "string",
+                "description": "massA"
+            },
+            "massB": {
+                "type": "string",
+                "description": "massB"
+            },
+            "fraction1": {
+                "type": "string",
+                "description": "fraction1"
+            },
+            "fraction2": {
+                "type": "string",
+                "description": "fraction2"
+            },
+            "index": {
+                "type": "int",
+                "description": "index"
+            },
+            "id": {
+                "type": "string",
+                "description": "id"
             }
         },
-        {
-            "name": "from_liquid_chromatography_to_mass_spectrometry",
-            "description": "从液相色谱仪纯化后的num个瓶子转移到质谱仪的西林瓶中",
-            "parameters": {
-                "type": "object",
-                "properties": {
-    "data": {
+        "required": [
+            "fileName",
+            "sampleLocation",
+            "injVol",
+            "inletFile",
+            "msFile",
+            "index",
+            "id"
+        ]
+    },
+    "others.fileName": {
         "type": "string",
-        "description": "data"
+        "description": "fileName"
     },
-    "num": {
-        "type": "int",
-        "description": "num"
+    "others.sampleLocation": {
+        "type": "string",
+        "description": "sampleLocation"
     },
-    "temp": {
+    "others.injVol": {
+        "type": "float",
+        "description": "injVol"
+    },
+    "others.inletFile": {
+        "type": "string",
+        "description": "inletFile"
+    },
+    "others.msFile": {
+        "type": "string",
+        "description": "msFile"
+    },
+    "others.fractionFile": {
+        "type": "string",
+        "description": "fractionFile"
+    },
+    "others.wavelengthA": {
+        "type": "float",
+        "description": "wavelengthA"
+    },
+    "others.massA": {
+        "type": "string",
+        "description": "massA"
+    },
+    "others.massB": {
+        "type": "string",
+        "description": "massB"
+    },
+    "others.fraction1": {
+        "type": "string",
+        "description": "fraction1"
+    },
+    "others.fraction2": {
+        "type": "string",
+        "description": "fraction2"
+    },
+    "others.index": {
         "type": "int",
-        "description": "temp"
+        "description": "index"
+    },
+    "others.id": {
+        "type": "string",
+        "description": "id"
     }
 },
-                "required": ["data", "temp"]
+                "required": ["cmd", "others", "others.fileName", "others.sampleLocation", "others.injVol", "others.inletFile", "others.msFile", "others.index", "others.id"]
             }
         }
                     ]

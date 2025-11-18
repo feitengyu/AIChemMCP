@@ -1,7 +1,7 @@
 """
 liquid_handling_workstation 设备工具类
 功能：定义设备所有动作的工具方法接口，需手动实现具体逻辑
-生成时间：2025-09-02 16:40:21
+生成时间：2025-08-11 14:09:55
 """
 
 class ActionServerTools:

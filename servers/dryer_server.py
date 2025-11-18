@@ -1,7 +1,7 @@
 import sys
 import json
 # 动态导入当前设备对应的工具类（与主服务器文件同目录）
-from tools.dryer_server_tools import ActionServerTools
+from dryer_server_tools import ActionServerTools
 
 
 # 创建全局工具管理器实例
@@ -37,6 +37,10 @@ def tool_start_heat(**params):
     return tool_manager.tool_start_heat(**params)
 
 
+def tool_force_online(**params):
+    return tool_manager.tool_force_online(**params)
+
+
 
 AVAILABLE_TOOLS_ACTION = {
     "open-door": tool_open_door,
@@ -45,7 +49,8 @@ AVAILABLE_TOOLS_ACTION = {
     "stop": tool_stop,
     "wait": tool_wait,
     "pure_dry": tool_pure_dry,
-    "start_heat": tool_start_heat
+    "start_heat": tool_start_heat,
+    "force_online": tool_force_online
 }
 
 
@@ -215,6 +220,20 @@ def dryer_server_advertise_capabilities():
     }
 },
                 "required": ["temperature"]
+            }
+        },
+        {
+            "name": "force_online",
+            "description": "强制上线",
+            "parameters": {
+                "type": "object",
+                "properties": {
+    "operation": {
+        "type": "string",
+        "description": "操作指令"
+    }
+},
+                "required": []
             }
         }
                     ]

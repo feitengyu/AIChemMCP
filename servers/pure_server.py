@@ -1,7 +1,7 @@
 import sys
 import json
 # 动态导入当前设备对应的工具类（与主服务器文件同目录）
-from tools.pure_server_tools import ActionServerTools
+from pure_server_tools import ActionServerTools
 
 
 # 创建全局工具管理器实例

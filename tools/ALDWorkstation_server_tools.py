@@ -1,7 +1,7 @@
 """
 ALDWorkstation 设备工具类
 功能：定义设备所有动作的工具方法接口，需手动实现具体逻辑
-生成时间：2025-09-01 17:54:56
+生成时间：2025-11-07 19:42:38
 """
 
 class ActionServerTools:
@@ -78,15 +78,12 @@ class ActionServerTools:
     def tool_writeEnableOzoneSwitch(self, **params):
         """设置臭氧发生器电源通断（动作标识：writeEnableOzoneSwitch）- 需实现具体逻辑"""
         raise NotImplementedError(f"未实现 设置臭氧发生器电源通断(writeEnableOzoneSwitch) 的工具逻辑")
-    def tool_loadRecipeStart(self, **params):
-        """总体的加载recipe使能 并运行使能（动作标识：loadRecipeStart）- 需实现具体逻辑"""
-        raise NotImplementedError(f"未实现 总体的加载recipe使能 并运行使能(loadRecipeStart) 的工具逻辑")
-    def tool_closeDoorAld(self, **params):
-        """ALD设备关闭舱门的recipe使能（动作标识：closeDoorAld）- 需实现具体逻辑"""
-        raise NotImplementedError(f"未实现 ALD设备关闭舱门的recipe使能(closeDoorAld) 的工具逻辑")
     def tool_openDoorAld(self, **params):
         """ALD设备 调用开启舱门的recipe使能（动作标识：openDoorAld）- 需实现具体逻辑"""
         raise NotImplementedError(f"未实现 ALD设备 调用开启舱门的recipe使能(openDoorAld) 的工具逻辑")
-    def tool_downloadFile(self, **params):
-        """从平台接收脚本文件下载到本地（动作标识：downloadFile）- 需实现具体逻辑"""
-        raise NotImplementedError(f"未实现 从平台接收脚本文件下载到本地(downloadFile) 的工具逻辑")
+    def tool_closeDoorAld(self, **params):
+        """ALD设备关闭舱门的recipe使能（动作标识：closeDoorAld）- 需实现具体逻辑"""
+        raise NotImplementedError(f"未实现 ALD设备关闭舱门的recipe使能(closeDoorAld) 的工具逻辑")
+    def tool_loadRecipeStart(self, **params):
+        """总体的加载recipe使能 并运行使能（动作标识：loadRecipeStart）- 需实现具体逻辑"""
+        raise NotImplementedError(f"未实现 总体的加载recipe使能 并运行使能(loadRecipeStart) 的工具逻辑")

@@ -1,7 +1,7 @@
 import sys
 import json
 # 动态导入当前设备对应的工具类（与主服务器文件同目录）
-from tools.high_flux_xrd_workstation_server_tools import ActionServerTools
+from high_flux_xrd_workstation_server_tools import ActionServerTools
 
 
 # 创建全局工具管理器实例
@@ -29,13 +29,18 @@ def tool_auto_confirm_tip_position(**params):
     return tool_manager.tool_auto_confirm_tip_position(**params)
 
 
+def tool_online(**params):
+    return tool_manager.tool_online(**params)
+
+
 
 AVAILABLE_TOOLS_ACTION = {
     "start_check": tool_start_check,
     "prefix_operate": tool_prefix_operate,
     "sleep": tool_sleep,
     "confirm_tip_position": tool_confirm_tip_position,
-    "auto_confirm_tip_position": tool_auto_confirm_tip_position
+    "auto_confirm_tip_position": tool_auto_confirm_tip_position,
+    "online": tool_online
 }
 
 
@@ -160,12 +165,16 @@ def high_flux_xrd_workstation_server_advertise_capabilities():
     },
     "position": {
         "type": "int",
-        "description": "当前使用的tip头位置（1-48）",
+        "description": "当前可用tip头起始位置（1-96）",
         "minimum": "1",
-        "maximum": "48"
+        "maximum": "96"
+    },
+    "type": {
+        "type": "int",
+        "description": "确认类型"
     }
 },
-                "required": ["operation", "position"]
+                "required": ["operation", "position", "type"]
             }
         },
         {
@@ -180,6 +189,20 @@ def high_flux_xrd_workstation_server_advertise_capabilities():
     }
 },
                 "required": ["operation"]
+            }
+        },
+        {
+            "name": "online",
+            "description": "强制上线",
+            "parameters": {
+                "type": "object",
+                "properties": {
+    "operation": {
+        "type": "string",
+        "description": "online"
+    }
+},
+                "required": []
             }
         }
                     ]

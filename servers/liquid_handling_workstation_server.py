@@ -1,7 +1,7 @@
 import sys
 import json
 # 动态导入当前设备对应的工具类（与主服务器文件同目录）
-from tools.liquid_handling_workstation_server_tools import ActionServerTools
+from liquid_handling_workstation_server_tools import ActionServerTools
 
 
 # 创建全局工具管理器实例
@@ -99,20 +99,38 @@ def liquid_handling_workstation_server_advertise_capabilities():
             "parameters": {
                 "type": "object",
                 "properties": {
-    "cmd": {
+    "operation": {
         "type": "string",
         "description": "操作指令"
     },
-    "others": {
-        "type": "array",
-        "description": "参数 others"
+    "time": {
+        "type": "int",
+        "description": "震荡时间（分）"
     },
-    "type": {
-        "type": "string",
-        "description": "类型"
+    "level": {
+        "type": "int",
+        "description": "震荡档位",
+        "enum": [
+            {
+                "label": "一级",
+                "value": 0
+            },
+            {
+                "label": "二级",
+                "value": 1
+            },
+            {
+                "label": "三级",
+                "value": 2
+            },
+            {
+                "label": "四级",
+                "value": 3
+            }
+        ]
     }
 },
-                "required": ["cmd", "others"]
+                "required": ["operation", "level"]
             }
         },
         {
@@ -121,20 +139,36 @@ def liquid_handling_workstation_server_advertise_capabilities():
             "parameters": {
                 "type": "object",
                 "properties": {
-    "cmd": {
+    "operation": {
         "type": "string",
         "description": "操作指令"
     },
-    "others": {
-        "type": "array",
-        "description": "入参"
+    "clean_solution": {
+        "type": "int",
+        "description": "清洗液",
+        "enum": [
+            {
+                "label": "乙醚",
+                "value": 0
+            },
+            {
+                "label": "水",
+                "value": 1
+            },
+            {
+                "label": "酒精",
+                "value": 2
+            }
+        ]
     },
-    "type": {
-        "type": "string",
-        "description": "类型"
+    "time": {
+        "type": "int",
+        "description": "清洗时间（分）",
+        "minimum": "1",
+        "maximum": "60"
     }
 },
-                "required": ["cmd"]
+                "required": ["operation", "clean_solution", "time"]
             }
         },
         {
@@ -143,20 +177,36 @@ def liquid_handling_workstation_server_advertise_capabilities():
             "parameters": {
                 "type": "object",
                 "properties": {
-    "cmd": {
+    "operation": {
         "type": "string",
         "description": "操作指令"
     },
-    "others": {
-        "type": "array",
-        "description": "入参"
+    "solution": {
+        "type": "int",
+        "description": "反应溶液",
+        "enum": [
+            {
+                "label": "乙醚",
+                "value": 0
+            },
+            {
+                "label": "水",
+                "value": 1
+            },
+            {
+                "label": "酒精",
+                "value": 2
+            }
+        ]
     },
-    "type": {
-        "type": "string",
-        "description": "类型"
+    "count": {
+        "type": "int",
+        "description": "溶液量（ml）",
+        "minimum": "0",
+        "maximum": "50"
     }
 },
-                "required": ["cmd", "others"]
+                "required": []
             }
         },
         {
@@ -165,20 +215,36 @@ def liquid_handling_workstation_server_advertise_capabilities():
             "parameters": {
                 "type": "object",
                 "properties": {
-    "cmd": {
+    "operation": {
         "type": "string",
         "description": "操作指令"
     },
-    "others": {
-        "type": "array",
-        "description": "入参"
+    "solution": {
+        "type": "int",
+        "description": "反应溶液",
+        "enum": [
+            {
+                "label": "乙醚",
+                "value": 0
+            },
+            {
+                "label": "水",
+                "value": 1
+            },
+            {
+                "label": "酒精",
+                "value": 2
+            }
+        ]
     },
-    "type": {
-        "type": "string",
-        "description": "类型"
+    "count": {
+        "type": "int",
+        "description": "溶液量（ml）",
+        "minimum": "0",
+        "maximum": "50"
     }
 },
-                "required": ["cmd", "others"]
+                "required": []
             }
         }
                     ]

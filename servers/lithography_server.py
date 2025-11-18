@@ -1,7 +1,7 @@
 import sys
 import json
 # 动态导入当前设备对应的工具类（与主服务器文件同目录）
-from tools.lithography_server_tools import ActionServerTools
+from lithography_server_tools import ActionServerTools
 
 
 # 创建全局工具管理器实例
@@ -73,14 +73,6 @@ def tool_open_door(**params):
     return tool_manager.tool_open_door(**params)
 
 
-def tool_get_stage_position(**params):
-    return tool_manager.tool_get_stage_position(**params)
-
-
-def tool_get_move_steps(**params):
-    return tool_manager.tool_get_move_steps(**params)
-
-
 
 AVAILABLE_TOOLS_ACTION = {
     "init_communication": tool_init_communication,
@@ -98,9 +90,7 @@ AVAILABLE_TOOLS_ACTION = {
     "neg_light": tool_neg_light,
     "close_camera": tool_close_camera,
     "close_door": tool_close_door,
-    "open_door": tool_open_door,
-    "get_stage_position": tool_get_stage_position,
-    "get_move_steps": tool_get_move_steps
+    "open_door": tool_open_door
 }
 
 
@@ -563,10 +553,6 @@ def lithography_server_advertise_capabilities():
     "resultCode": {
         "type": "string",
         "description": "resultCode"
-    },
-    "task_tip": {
-        "type": "string",
-        "description": "任务描述"
     }
 },
                 "required": ["operation", "process_script", "process_script.id", "matrix", "base_speed", "speed_step", "base_laser_power", "power_step", "resultCode"]
@@ -643,34 +629,6 @@ def lithography_server_advertise_capabilities():
         {
             "name": "open_door",
             "description": "开门",
-            "parameters": {
-                "type": "object",
-                "properties": {
-    "operation": {
-        "type": "string",
-        "description": "操作指令"
-    }
-},
-                "required": ["operation"]
-            }
-        },
-        {
-            "name": "get_stage_position",
-            "description": "获取样品台位置",
-            "parameters": {
-                "type": "object",
-                "properties": {
-    "operation": {
-        "type": "string",
-        "description": "操作指令"
-    }
-},
-                "required": ["operation"]
-            }
-        },
-        {
-            "name": "get_move_steps",
-            "description": "获取移动信息",
             "parameters": {
                 "type": "object",
                 "properties": {

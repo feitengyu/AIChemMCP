@@ -1,7 +1,7 @@
 """
 high_flux_ir_workstation 设备工具类
 功能：定义设备所有动作的工具方法接口，需手动实现具体逻辑
-生成时间：2025-08-25 19:40:07
+生成时间：2025-11-07 19:42:38
 """
 
 class ActionServerTools:
@@ -21,3 +21,9 @@ class ActionServerTools:
     def tool_confirm_tip_position(self, **params):
         """确认tip头位置（动作标识：confirm_tip_position）- 需实现具体逻辑"""
         raise NotImplementedError(f"未实现 确认tip头位置(confirm_tip_position) 的工具逻辑")
+    def tool_online(self, **params):
+        """强制上线（动作标识：online）- 需实现具体逻辑"""
+        raise NotImplementedError(f"未实现 强制上线(online) 的工具逻辑")
+    def tool_auto_confirm_tip_position(self, **params):
+        """自动确认tip头位置（动作标识：auto_confirm_tip_position）- 需实现具体逻辑"""
+        raise NotImplementedError(f"未实现 自动确认tip头位置(auto_confirm_tip_position) 的工具逻辑")

@@ -1,7 +1,7 @@
 """
 fluorescence_spectrometry_workstation 设备工具类
 功能：定义设备所有动作的工具方法接口，需手动实现具体逻辑
-生成时间：2025-08-22 09:36:31
+生成时间：2025-11-07 19:42:38
 """
 
 class ActionServerTools:
