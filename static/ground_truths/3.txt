@@ -1,5 +1,3 @@
 物料拿取 starting_station
-加液
 液体加样 liquid_dispensing
 容器中转 transfer_workstation
-紫外光谱进样绘图

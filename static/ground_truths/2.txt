@@ -1,7 +1,7 @@
 物料拿取 starting_station
 液体进样站 liquid_dispensing
 磁力搅拌 magnetic_stirring
-烘干
+烘干 dryer
 离心纯化 gn_centrifugation_workstation
 液体进样站 liquid_dispensing
 磁力搅拌 magnetic_stirring
