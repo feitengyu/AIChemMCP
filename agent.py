@@ -19,6 +19,7 @@ class Agent:
         # 初始化RAG数据库
         self.rag_db = RAGDatabase(rag_db_path)
         print(f"[AGENT] RAG数据库初始化完成，当前包含 {self.rag_db.get_entry_count()} 条记录")
+
     def start_server(self, name: str, command: list):
         """启动一个服务器子进程并管理其IO管道"""
         print(f"[AGENT] Starting server: {name}...")
@@ -49,22 +50,58 @@ class Agent:
     def discover_tools(self):
         """从所有启动的服务器接收advertise消息，并构建工具列表"""
         print("\n[AGENT] Discovering tools from all servers...")
+        
         for name, server in self.servers.items():
-            # MCP规定，服务器启动后第一条消息必须是advertise
+            print(f"[AGENT] Reading from server: {name}")
+            
+            # 读取服务器的第一条消息（应该是advertise）
             adv_line = server['stdout'].readline()
+            print(f"[AGENT] Raw output from {name}: {repr(adv_line)}")
+            
             if not adv_line:
-                break
-            adv_data = json.loads(adv_line)
-            server_tools = adv_data.get("params", {}).get("server", {}).get("capabilities", {}).get("tools", [])
-            for tool in server_tools:
-                tool_name = tool['name']
-                self.tools[tool_name] = tool
-                self.tools[tool_name]['server_name'] = name  # 记录这个工具属于哪个服务器
-            print(f"[AGENT] Discovered {len(server_tools)} tools from '{name}'.")
+                print(f"[AGENT] No output from server {name}")
+                continue
+                
+            try:
+                adv_data = json.loads(adv_line)
+                print(f"[AGENT] Successfully parsed JSON from {name}")
+                
+                # 提取工具列表 - 注意路径可能有变化
+                server_tools = []
+                
+                # 尝试不同的路径
+                if "params" in adv_data and "server" in adv_data["params"]:
+                    server_tools = adv_data["params"]["server"].get("capabilities", {}).get("tools", [])
+                elif "result" in adv_data and "server" in adv_data["result"]:
+                    server_tools = adv_data["result"]["server"].get("capabilities", {}).get("tools", [])
+                else:
+                    print(f"[AGENT] Unexpected message format from {name}: {adv_data}")
+                    continue
+                    
+                print(f"[AGENT] Found {len(server_tools)} tools from '{name}'")
+                
+                for tool in server_tools:
+                    tool_name = tool['name']
+                    self.tools[tool_name] = tool
+                    self.tools[tool_name]['server_name'] = name
+                    print(f"[AGENT] Added tool: {tool_name}")
+                    
+            except json.JSONDecodeError as e:
+                print(f"[AGENT] JSON decode error from {name}: {e}")
+                print(f"[AGENT] Raw line that failed: {repr(adv_line)}")
+            except Exception as e:
+                print(f"[AGENT] Error processing {name}: {e}")
+
         print(f"[AGENT] Tool discovery complete. Total tools available: {len(self.tools)}")
+        
+        # 打印所有发现的工具
+        if self.tools:
+            print("[AGENT] Available tools:")
+            for tool_name in self.tools.keys():
+                print(f"  - {tool_name}")
 
     def build_system_prompt(self) -> str:
-        """构建包含角色、工具列表和“脚手架”的系统提示"""
+        """构建包含角色、工具列表和"脚手架"的系统提示"""
         prompt = "# 角色与总目标\n"
         prompt += "你是一位顶级的AI研究化学家。你的任务是利用实验室的自动化工具，高效、安全地完成科研目标。\n\n"
 
@@ -76,7 +113,7 @@ class Agent:
         prompt += "---\n\n"
 
         prompt += "# 核心工作流提示 (SOPs & Best Practices)\n"
-        prompt += "当你需要执行一个**优化任务**时，一个高效、标准的流程是“贝叶斯优化循环”。强烈建议你遵循以下步骤：\n"
+        prompt += "当你需要执行一个**优化任务**时，一个高效、标准的流程是贝叶斯优化循环。强烈建议你遵循以下步骤：\n"
         prompt += "1.  **初始化 (Initialize)**: (如果需要) 调用 `initialize` 来开始一个新的优化会话。\n"
         prompt += "2.  **建议 (Suggest)**: 调用 `suggest` 工具，获取下一步的实验参数。\n"
         prompt += "3.  **执行 (Execute)**: 使用 `robotic_reaction` 和 `robotic_measurement` 工具来运行实验并测量结果。\n"
@@ -85,7 +122,7 @@ class Agent:
 
         return prompt
 
-    def build_rag_enhanced_prompt(self, user_goal: str, top_k=3) -> str:
+    def build_rag_enhanced_prompt(self, user_goal: str, top_k=4) -> str:
         """
         构建包含RAG上下文的增强提示
 
@@ -115,6 +152,7 @@ class Agent:
         rag_prompt += "4. **完整性**: 确保你的解决方案覆盖所有必要的步骤\n\n"
 
         return rag_prompt
+
 
     def dispatch_tool_call(self, tool_call: dict) -> dict:
         """将工具调用请求分发给正确的服务器并返回结果"""
@@ -168,7 +206,7 @@ class Agent:
         """【规划阶段】调用LLM生成一个多步计划"""
         print("\n[AGENT] Entering PLANNING stage...")
         rag_enhanced_prompt = self.build_rag_enhanced_prompt(user_goal)
-        system_prompt=rag_enhanced_prompt
+        system_prompt = rag_enhanced_prompt
         plan = self.llm_client.generate_plan(system_prompt, user_goal, self.tools)
 
         print("[AGENT] Plan generated successfully.")
@@ -224,7 +262,7 @@ class Agent:
                 print(f"\nAgent: {llm_response['speak']}")
 
 
-def start_all_servers(servers_dir="servers"):
+def start_all_servers(servers_dir="servers_and_tools"):
     """遍历servers目录下的所有Python文件并启动对应的服务器"""
     # 检查servers目录是否存在
     if not os.path.exists(servers_dir):
@@ -260,18 +298,21 @@ def start_all_servers(servers_dir="servers"):
 if __name__ == "__main__":
     agent = Agent()
 
-    # 启动所有需要的服务器
-    #agent.start_server("BO_Server", ["python", "servers/bo_server.py"])
-    start_all_servers()
+    # 启动所有服务器
+    start_all_servers("servers_and_tools")
 
-    # 等待服务器启动并完成工具发现
-    time.sleep(1)  # 给予服务器一点启动时间
+    # 增加等待时间，确保服务器完全启动
+    print("[AGENT] Waiting for servers to initialize...")
+    time.sleep(3)  # 增加到3秒
+    
     agent.discover_tools()
 
-    # 启动Agent的主循环
-    #agent.run()
-
-    # 测试Agent的plan_workflow函数
-    user_goal = "催化剂气液传质微环境中的电响应自动调控。"
-    plan = agent.plan_workflow(user_goal)
-    print(plan)
+    # 生成计划
+    if agent.tools:
+        user_goal = "如何制备碳量子点及其光谱表征？"
+        plan = agent.plan_workflow(user_goal)
+        print("生成的计划:")
+        for i, step in enumerate(plan, 1):
+            print(f"  步骤 {i}: {step}")
+    else:
+        print("错误: 没有发现任何工具")

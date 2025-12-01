@@ -1,0 +1,5 @@
+
+  步骤 1: {'method': '物料站', 'params': {}}
+  步骤 2: {'method': '磁力搅拌工作站', 'params': {'speed': 300, 'time_minutes': 60}}
+  步骤 3: {'method': '紫外光谱工作站', 'params': {'sample_name': 'gold_nanoparticles'}}
+  步骤 4: {'method': '荧光光谱工作站', 'params': {'sample_name': 'gold_nanoparticles'}}

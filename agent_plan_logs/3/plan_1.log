@@ -1,0 +1,8 @@
+=== 第 1 次执行计划 ===
+  步骤 1: {'method': '荧光光谱工作站', 'params': {'description': "Measure the absorbance of Rhodamine B at various concentrations to obtain data for Beer's Law (A = εbc)."}}
+  步骤 2: {'method': '紫外光谱工作站', 'params': {'description': 'Determine the wavelength of maximum absorbance (λmax) for Rhodamine B to ensure accurate measurements.'}}
+  步骤 3: {'method': '液站工作站', 'params': {'description': 'Prepare a series of Rhodamine B solutions with known concentrations.'}}
+  步骤 4: {'method': '色谱工作站', 'params': {'description': 'Verify the purity of Rhodamine B solutions to ensure accurate molar extinction coefficient calculations.'}}
+  步骤 5: {'method': '综合反应平台', 'params': {'description': 'Mix Rhodamine B solutions thoroughly to ensure homogeneity before measurements.'}}
+  步骤 6: {'method': '氮吹工作站', 'params': {'description': 'Concentrate the Rhodamine B solutions if necessary to ensure the concentration range is appropriate for measurement.'}}
+  步骤 7: {'method': '烘干机', 'params': {'description': 'Dry glassware and cuvettes to be used in absorbance measurements to avoid errors due to water residue.'}}

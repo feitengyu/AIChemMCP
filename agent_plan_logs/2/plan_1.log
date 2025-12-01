@@ -1,0 +1,8 @@
+=== 第 1 次执行计划 ===
+  步骤 1: {'method': '物料站', 'params': {}}
+  步骤 2: {'method': '电化学-高温炉', 'params': {}}
+  步骤 3: {'method': '纯化工作站', 'params': {}}
+  步骤 4: {'method': '核酸提取仪', 'params': {}}
+  步骤 5: {'method': '烧结工作站', 'params': {}}
+  步骤 6: {'method': '高通量电化学筛选工作站', 'params': {}}
+  步骤 7: {'method': '质谱工作站', 'params': {}}

@@ -1,0 +1,4 @@
+=== 第 5 次执行计划 ===
+  步骤 1: {'method': '荧光光谱工作站', 'params': {'task': 'Measure the absorbance and fluorescence emission of Rhodamine B to determine the Beer-Lambert Law parameters.'}}
+  步骤 2: {'method': '紫外光谱工作站', 'params': {'task': 'Use UV-Vis spectroscopy to measure the absorption spectrum of Rhodamine B and calculate the molar extinction coefficient.'}}
+  

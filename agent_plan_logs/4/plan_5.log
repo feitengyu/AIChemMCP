@@ -1,0 +1,9 @@
+=== 第 5 次执行计划 ===
+  步骤 1: {'method': '超声清洗', 'params': {}}
+  步骤 2: {'method': '电化学-高温炉', 'params': {}}
+  步骤 3: {'method': '高通量平台-XRD工作站', 'params': {}}
+  步骤 4: {'method': '紫外光谱工作站', 'params': {}}
+  步骤 5: {'method': '离心工作站', 'params': {}}
+  步骤 6: {'method': '烘干机', 'params': {}}
+  步骤 7: {'method': '质谱工作站', 'params': {}}
+  步骤 8: {'method': '角接触仪工作站', 'params': {}}

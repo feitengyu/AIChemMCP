@@ -1,0 +1,6 @@
+=== 第 3 次执行计划 ===
+  步骤 1: {'method': '物料站', 'params': {}}
+  步骤 2: {'method': '电化学-高温炉', 'params': {'temperature': 300, 'time': '2h'}}
+  步骤 3: {'method': '纯化工作站', 'params': {}}
+  步骤 4: {'method': '光热催化反应工作站', 'params': {'temperature': 80, 'time': '12h'}}
+  步骤 5: {'method': '高通量电化学筛选工作站', 'params': {}}

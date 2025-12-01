@@ -1,173 +1,199 @@
 {
-"entries":
-[
-  {
-    "question": "如何优化催化剂的反应产率？",
-    "workflow": [
-      {
-        "method": "initialize",
-        "params": {
-          "experiment_name": "catalyst_optimization",
-          "parameters": {
-            "temperature": [
-              25,
-              100
-            ],
-            "pressure": [
-              1,
-              5
-            ]
+  "entries": [
+    {
+      "question": "如何制备金纳米粒子与光谱表征？",
+      "workflow": [
+        {
+          "method": "物料站",
+          "params": {}
+        },
+        {
+          "method": "磁力搅拌工作站",
+          "params": {}
+        },
+        {
+          "method": "综合反应平台",
+          "params": {}
+        },
+        {
+          "method": "离心工作站",
+          "params": {}
+        },
+        {
+          "method": "紫外光谱工作站",
+          "params": {}
+        },
+        {
+          "method": "荧光光谱工作站",
+          "params": {}
+        }
+      ],
+      "metadata": {
+        "source": "plan_1-1.log",
+        "category": "nanomaterial_synthesis"
+      }
+    },
+    {
+      "question": "如何制备高熵氢氧化物并进行电催化性能测试？",
+      "workflow": [
+        {
+          "method": "物料站",
+          "params": {}
+        },
+        {
+          "method": "电化学-高温炉",
+          "params": {}
+        },
+        {
+          "method": "纯化工作站",
+          "params": {}
+        },
+        {
+          "method": "核酸提取仪",
+          "params": {}
+        },
+        {
+          "method": "烧结工作站",
+          "params": {}
+        },
+        {
+          "method": "高通量电化学筛选工作站",
+          "params": {}
+        },
+        {
+          "method": "质谱工作站",
+          "params": {}
+        }
+      ],
+      "metadata": {
+        "source": "plan_1 - 2.log",
+        "category": "electrocatalysis"
+      }
+    },
+    {
+      "question": "如何通过罗丹明B验证摩尔消光系数公式？",
+      "workflow": [
+        {
+          "method": "荧光光谱工作站",
+          "params": {
+            "description": "Measure the absorbance of Rhodamine B at various concentrations to obtain data for Beer's Law (A = εbc)."
+          }
+        },
+        {
+          "method": "紫外光谱工作站",
+          "params": {
+            "description": "Determine the wavelength of maximum absorbance (λmax) for Rhodamine B to ensure accurate measurements."
+          }
+        },
+        {
+          "method": "液站工作站",
+          "params": {
+            "description": "Prepare a series of Rhodamine B solutions with known concentrations."
+          }
+        },
+        {
+          "method": "色谱工作站",
+          "params": {
+            "description": "Verify the purity of Rhodamine B solutions to ensure accurate molar extinction coefficient calculations."
+          }
+        },
+        {
+          "method": "综合反应平台",
+          "params": {
+            "description": "Mix Rhodamine B solutions thoroughly to ensure homogeneity before measurements."
+          }
+        },
+        {
+          "method": "氮吹工作站",
+          "params": {
+            "description": "Concentrate the Rhodamine B solutions if necessary to ensure the concentration range is appropriate for measurement."
+          }
+        },
+        {
+          "method": "烘干机",
+          "params": {
+            "description": "Dry glassware and cuvettes to be used in absorbance measurements to avoid errors due to water residue."
           }
         }
-      },
-      {
-        "method": "suggest",
-        "params": {
-          "count": 5
-        }
-      },
-      {
-        "method": "robotic_reaction",
-        "params": {
-          "temperature": 60,
-          "pressure": 3,
-          "catalyst_amount": 0.5
-        }
-      },
-      {
-        "method": "robotic_measurement",
-        "params": {
-          "measurement_type": "yield"
-        }
-      },
-      {
-        "method": "observe",
-        "params": {
-          "parameters": {
-            "temperature": 60,
-            "pressure": 3,
-            "catalyst_amount": 0.5
-          },
-          "result": 85.2
-        }
+      ],
+      "metadata": {
+        "source": "plan_1 - 3.log",
+        "category": "spectroscopy_validation"
       }
-    ],
-    "metadata": {
-      "source": "test_data",
-      "category": "catalyst_optimization"
-    }
-  },
-  {
-    "question": "如何提高合成反应的选择性？",
-    "workflow": [
-      {
-        "method": "initialize",
-        "params": {
-          "experiment_name": "selectivity_improvement",
-          "parameters": {
-            "temperature": [
-              0,
-              50
-            ],
-            "catalyst_ratio": [
-              0.1,
-              1.0
-            ]
-          }
+    },
+    {
+      "question": "设计一个纳米材料对有机染料的吸附实验？",
+      "workflow": [
+        {
+          "method": "物料站",
+          "params": {}
+        },
+        {
+          "method": "超声清洗",
+          "params": {}
+        },
+        {
+          "method": "紫外光谱工作站",
+          "params": {}
+        },
+        {
+          "method": "离心工作站",
+          "params": {}
+        },
+        {
+          "method": "烘干机",
+          "params": {}
         }
-      },
-      {
-        "method": "suggest",
-        "params": {
-          "count": 3
-        }
-      },
-      {
-        "method": "robotic_reaction",
-        "params": {
-          "temperature": 25,
-          "catalyst_ratio": 0.7,
-          "solvent": "ethanol"
-        }
-      },
-      {
-        "method": "robotic_measurement",
-        "params": {
-          "measurement_type": "selectivity"
-        }
-      },
-      {
-        "method": "observe",
-        "params": {
-          "parameters": {
-            "temperature": 25,
-            "catalyst_ratio": 0.7,
-            "solvent": "ethanol"
-          },
-          "result": 92.1
-        }
+      ],
+      "metadata": {
+        "source": "plan_1 - 4.log",
+        "category": "adsorption_experiment"
       }
-    ],
-    "metadata": {
-      "source": "test_data",
-      "category": "selectivity"
-    }
-  },
-  {
-    "question": "如何加速反应动力学？",
-    "workflow": [
-      {
-        "method": "initialize",
-        "params": {
-          "experiment_name": "kinetics_improvement",
-          "parameters": {
-            "temperature": [
-              50,
-              150
-            ],
-            "stirring_rate": [
-              100,
-              1000
-            ]
-          }
+    },
+    {
+      "question": "如何制备碳量子点及其光谱表征？",
+      "workflow": [
+        {
+          "method": "物料站",
+          "params": {}
+        },
+        {
+          "method": "综合反应平台",
+          "params": {}
+        },
+        {
+          "method": "磁力搅拌工作站",
+          "params": {}
+        },
+        {
+          "method": "管式炉处理工作站",
+          "params": {}
+        },
+        {
+          "method": "离心工作站",
+          "params": {}
+        },
+        {
+          "method": "纯化工作站",
+          "params": {}
+        },
+        {
+          "method": "冷冻干燥工作站",
+          "params": {}
+        },
+        {
+          "method": "紫外光谱工作站",
+          "params": {}
+        },
+        {
+          "method": "荧光光谱工作站",
+          "params": {}
         }
-      },
-      {
-        "method": "suggest",
-        "params": {
-          "count": 4
-        }
-      },
-      {
-        "method": "robotic_reaction",
-        "params": {
-          "temperature": 120,
-          "stirring_rate": 800,
-          "catalyst": "Pd/C"
-        }
-      },
-      {
-        "method": "robotic_measurement",
-        "params": {
-          "measurement_type": "reaction_rate"
-        }
-      },
-      {
-        "method": "observe",
-        "params": {
-          "parameters": {
-            "temperature": 120,
-            "stirring_rate": 800,
-            "catalyst": "Pd/C"
-          },
-          "result": 0.056
-        }
+      ],
+      "metadata": {
+        "source": "plan_1 - 5.log",
+        "category": "quantum_dot_synthesis"
       }
-    ],
-    "metadata": {
-      "source": "test_data",
-      "category": "kinetics"
     }
-  }
-]
+  ]
 }

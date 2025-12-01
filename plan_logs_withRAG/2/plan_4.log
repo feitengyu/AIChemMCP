@@ -1,0 +1,11 @@
+=== 第 4 次执行计划 ===
+  步骤 1: {'method': '物料站', 'params': {}}
+  步骤 2: {'method': '磁力搅拌工作站', 'params': {'description': '通过混合金属盐溶液制备高熵氢氧化物前体。'}}
+  步骤 3: {'method': '综合反应平台', 'params': {'description': '加入水氧化、氢氧化钠等助剂进行反应，形成高熵氢氧化物沉淀。'}}
+  步骤 4: {'method': '离心工作站', 'params': {'description': '通过离心分离获得纯高熵氢氧化物沉淀物。'}}
+  步骤 5: {'method': '烘干机', 'params': {'description': '干燥高熵氢氧化物沉淀以除去多余水分和溶剂。'}}
+  步骤 6: {'method': 'ALD工作站', 'params': {'description': '采用ALD方法对高熵氢氧化物进行催化剂表面改性。'}}
+  步骤 7: {'method': '电化学-高温炉', 'params': {'description': '对高熵氢氧化物进行热处理以增强催化性能。'}}
+  步骤 8: {'method': '单原子仿酶催化平台', 'params': {'description': '测试高熵氢氧化物在电催化中的性能，特别是析氢反应的活性和稳定性。'}}
+  步骤 9: {'method': '紫外光谱工作站', 'params': {'description': '利用UV光谱分析催化过程中可能的活性位点变化。'}}
+  步骤 10: {'method': '质谱工作站', 'params': {'description': '质谱检测高熵氢氧化物电催化反应前后的结构变化。'}}

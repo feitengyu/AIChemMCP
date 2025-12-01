@@ -1,0 +1,9 @@
+=== 第 2 次执行计划 ===
+  步骤 1: {'method': '物料站', 'params': {}}
+  步骤 2: {'method': '电化学-高温炉', 'params': {}}
+  步骤 3: {'method': 'drying_oven', 'params': {}}
+  步骤 4: {'method': 'grinding_workstation', 'params': {}}
+  步骤 5: {'method': '固体进样工作站', 'params': {}}
+  步骤 6: {'method': '荧光光谱工作站', 'params': {}}
+  步骤 7: {'method': '单原子仿酶催化平台', 'params': {}}
+  步骤 8: {'method': 'electrochemical_workstation', 'params': {}}

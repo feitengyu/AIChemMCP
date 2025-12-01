@@ -1,0 +1,9 @@
+=== 第 2 次执行计划 ===
+  步骤 1: {'method': '物料站', 'params': {}}
+  步骤 2: {'method': '磁力搅拌工作站', 'params': {'description': 'Mix the precursor solutions to form a uniform solution for high entropy hydroxide synthesis.'}}
+  步骤 3: {'method': '综合反应平台', 'params': {'description': 'Conduct the hydrothermal synthesis of high entropy hydroxide from the mixed precursor solution.'}}
+  步骤 4: {'method': '离心工作站', 'params': {'description': 'Separate the synthesized high entropy hydroxide from the reaction mixture.'}}
+  步骤 5: {'method': '纯化工作站', 'params': {'description': 'Purify the high entropy hydroxide to remove any impurities from the synthesis process.'}}
+  步骤 6: {'method': '烘干机', 'params': {'description': 'Dry the purified high entropy hydroxide to obtain the final solid product.'}}
+  步骤 7: {'method': '电化学-高温炉', 'params': {'description': 'Perform high temperature treatment of the high entropy hydroxide to enhance crystallinity.'}}
+  步骤 8: {'method': '高通量电化学筛选工作站', 'params': {'description': 'Test the electrocatalytic performance of the synthesized high entropy hydroxide.'}}

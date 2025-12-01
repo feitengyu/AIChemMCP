@@ -1,0 +1,6 @@
+=== 第 1 次执行计划 ===
+  步骤 1: {'method': '物料站', 'params': {}}
+  步骤 2: {'method': '超声清洗', 'params': {}}
+  步骤 3: {'method': '紫外光谱工作站', 'params': {}}
+  步骤 4: {'method': '离心工作站', 'params': {}}
+  步骤 5: {'method': '烘干机', 'params': {}}

@@ -12,7 +12,7 @@ class RAGDatabase:
         初始化RAG数据库
         """
         self.db_path = db_path
-        self.model = SentenceTransformer(r"D:\all-MiniLM-L6-v2")
+        self.model = SentenceTransformer(model_name)
         self.data = self._load_database()
 
     def _load_database(self):
@@ -65,7 +65,7 @@ class RAGDatabase:
         self.data["entries"].append(entry)
         return self._save_database()
 
-    def find_similar(self, query, top_k=3, search_field="question"):
+    def find_similar(self, query, top_k=4, search_field="question"):
         """
         查找与查询最相似的条目
         """
@@ -80,6 +80,10 @@ class RAGDatabase:
         entries = []
 
         for entry in self.data["entries"]:
+            # ❗ 跳过与 user_goal 完全相同的问题
+            if entry["question"].strip() == query.strip():
+                continue
+            
             if search_field == "question":
                 question_embedding = self.model.encode(entry["question"]).tolist()
                 embedding = np.array(question_embedding)

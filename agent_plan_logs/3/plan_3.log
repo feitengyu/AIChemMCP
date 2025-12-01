@@ -1,0 +1,4 @@
+=== 第 3 次执行计划 ===
+  步骤 1: {'method': '荧光光谱工作站', 'params': {'description': 'Measure the fluorescence intensity of Rhodamine B solutions at different concentrations to determine the molar extinction coefficient.'}}
+  步骤 2: {'method': '紫外光谱工作站', 'params': {'description': 'Measure the UV-Vis absorbance of Rhodamine B solutions at different concentrations to obtain absorbance data.'}}
+  步骤 3: {'method': '液站工作站', 'params': {'description': 'Prepare Rhodamine B solutions of varying concentrations for measurement.'}}
