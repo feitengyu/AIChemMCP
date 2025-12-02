@@ -4,120 +4,176 @@
       "question": "如何制备金纳米粒子与光谱表征？",
       "workflow": [
         {
-          "method": "物料站",
-          "params": {}
+          "method": "物料拿取",
+          "params": {
+            "description": "starting_station"
+          }
         },
         {
-          "method": "磁力搅拌工作站",
-          "params": {}
+          "method": "固体进样",
+          "params": {
+            "description": "ustc_mul_solid"
+          }
         },
         {
-          "method": "综合反应平台",
-          "params": {}
+          "method": "液体加样",
+          "params": {
+            "description": "liquid_dispensing"
+          }
         },
         {
-          "method": "离心工作站",
-          "params": {}
+          "method": "磁力搅拌",
+          "params": {
+            "description": "magnetic_stirring"
+          }
         },
         {
-          "method": "紫外光谱工作站",
-          "params": {}
+          "method": "离心纯化",
+          "params": {
+            "description": "gn_centrifugation_workstation"
+          }
         },
         {
-          "method": "荧光光谱工作站",
-          "params": {}
+          "method": "磁力搅拌",
+          "params": {
+            "description": "magnetic_stirring"
+          }
+        },
+        {
+          "method": "离心纯化",
+          "params": {
+            "description": "gn_centrifugation_workstation"
+          }
+        },
+        {
+          "method": "磁力搅拌",
+          "params": {
+            "description": "magnetic_stirring"
+          }
+        },
+        {
+          "method": "离心纯化",
+          "params": {
+            "description": "gn_centrifugation_workstation"
+          }
+        },
+        {
+          "method": "烘干",
+          "params": {
+            "description": "dryer"
+          }
+        },
+        {
+          "method": "容器中转",
+          "params": {
+            "description": "transfer_workstation"
+          }
+        },
+        {
+          "method": "物料回收",
+          "params": {
+            "description": "elec_chem_storage_workstation"
+          }
         }
       ],
       "metadata": {
-        "source": "plan_1-1.log",
-        "category": "nanomaterial_synthesis"
+        "source": "1.txt",
+        "category": "gold_nanoparticle_synthesis"
       }
     },
     {
       "question": "如何制备高熵氢氧化物并进行电催化性能测试？",
       "workflow": [
         {
-          "method": "物料站",
-          "params": {}
+          "method": "物料拿取",
+          "params": {
+            "description": "starting_station"
+          }
         },
         {
-          "method": "电化学-高温炉",
-          "params": {}
+          "method": "液体进样站",
+          "params": {
+            "description": "liquid_dispensing"
+          }
         },
         {
-          "method": "纯化工作站",
-          "params": {}
+          "method": "磁力搅拌",
+          "params": {
+            "description": "magnetic_stirring"
+          }
         },
         {
-          "method": "核酸提取仪",
-          "params": {}
+          "method": "烘干",
+          "params": {
+            "description": "dryer"
+          }
         },
         {
-          "method": "烧结工作站",
-          "params": {}
+          "method": "离心纯化",
+          "params": {
+            "description": "gn_centrifugation_workstation"
+          }
         },
         {
-          "method": "高通量电化学筛选工作站",
-          "params": {}
+          "method": "液体进样站",
+          "params": {
+            "description": "liquid_dispensing"
+          }
         },
         {
-          "method": "质谱工作站",
-          "params": {}
+          "method": "磁力搅拌",
+          "params": {
+            "description": "magnetic_stirring"
+          }
+        },
+        {
+          "method": "超声清洗",
+          "params": {
+            "description": "ultrasonic_cleaning"
+          }
+        },
+        {
+          "method": "电化学检测",
+          "params": {
+            "description": "high_throughput_advanced_material_screening_workstation"
+          }
+        },
+        {
+          "method": "物料回收",
+          "params": {
+            "description": "elec_chem_storage_workstation"
+          }
         }
       ],
       "metadata": {
-        "source": "plan_1 - 2.log",
-        "category": "electrocatalysis"
+        "source": "2.txt",
+        "category": "high_entropy_hydroxide"
       }
     },
     {
       "question": "如何通过罗丹明B验证摩尔消光系数公式？",
       "workflow": [
         {
-          "method": "荧光光谱工作站",
+          "method": "物料拿取",
           "params": {
-            "description": "Measure the absorbance of Rhodamine B at various concentrations to obtain data for Beer's Law (A = εbc)."
+            "description": "starting_station"
           }
         },
         {
-          "method": "紫外光谱工作站",
+          "method": "液体加样",
           "params": {
-            "description": "Determine the wavelength of maximum absorbance (λmax) for Rhodamine B to ensure accurate measurements."
+            "description": "liquid_dispensing"
           }
         },
         {
-          "method": "液站工作站",
+          "method": "容器中转",
           "params": {
-            "description": "Prepare a series of Rhodamine B solutions with known concentrations."
-          }
-        },
-        {
-          "method": "色谱工作站",
-          "params": {
-            "description": "Verify the purity of Rhodamine B solutions to ensure accurate molar extinction coefficient calculations."
-          }
-        },
-        {
-          "method": "综合反应平台",
-          "params": {
-            "description": "Mix Rhodamine B solutions thoroughly to ensure homogeneity before measurements."
-          }
-        },
-        {
-          "method": "氮吹工作站",
-          "params": {
-            "description": "Concentrate the Rhodamine B solutions if necessary to ensure the concentration range is appropriate for measurement."
-          }
-        },
-        {
-          "method": "烘干机",
-          "params": {
-            "description": "Dry glassware and cuvettes to be used in absorbance measurements to avoid errors due to water residue."
+            "description": "transfer_workstation"
           }
         }
       ],
       "metadata": {
-        "source": "plan_1 - 3.log",
+        "source": "3.txt",
         "category": "spectroscopy_validation"
       }
     },
@@ -125,28 +181,50 @@
       "question": "设计一个纳米材料对有机染料的吸附实验？",
       "workflow": [
         {
-          "method": "物料站",
-          "params": {}
+          "method": "物料拿取",
+          "params": {
+            "description": "starting_station"
+          }
         },
         {
-          "method": "超声清洗",
-          "params": {}
+          "method": "固体进样",
+          "params": {
+            "description": "ustc_mul_solid"
+          }
         },
         {
-          "method": "紫外光谱工作站",
-          "params": {}
+          "method": "液体加样",
+          "params": {
+            "description": "liquid_dispensing"
+          }
         },
         {
-          "method": "离心工作站",
-          "params": {}
+          "method": "磁力搅拌",
+          "params": {
+            "description": "magnetic_stirring"
+          }
         },
         {
-          "method": "烘干机",
-          "params": {}
+          "method": "离心纯化",
+          "params": {
+            "description": "gn_centrifugation_workstation"
+          }
+        },
+        {
+          "method": "液体加样",
+          "params": {
+            "description": "liquid_dispensing"
+          }
+        },
+        {
+          "method": "容器中转",
+          "params": {
+            "description": "transfer_workstation"
+          }
         }
       ],
       "metadata": {
-        "source": "plan_1 - 4.log",
+        "source": "4.txt",
         "category": "adsorption_experiment"
       }
     },
@@ -154,45 +232,87 @@
       "question": "如何制备碳量子点及其光谱表征？",
       "workflow": [
         {
-          "method": "物料站",
-          "params": {}
+          "method": "物料拿取",
+          "params": {
+            "description": "starting_station"
+          }
         },
         {
-          "method": "综合反应平台",
-          "params": {}
+          "method": "液体加样",
+          "params": {
+            "description": "liquid_dispensing"
+          }
         },
         {
-          "method": "磁力搅拌工作站",
-          "params": {}
+          "method": "磁力搅拌",
+          "params": {
+            "description": "magnetic_stirring"
+          }
         },
         {
-          "method": "管式炉处理工作站",
-          "params": {}
+          "method": "超声清洗",
+          "params": {
+            "description": "ultrasonic_cleaning"
+          }
         },
         {
-          "method": "离心工作站",
-          "params": {}
+          "method": "烘干",
+          "params": {
+            "description": "dryer"
+          }
         },
         {
-          "method": "纯化工作站",
-          "params": {}
+          "method": "离心纯化",
+          "params": {
+            "description": "gn_centrifugation_workstation"
+          }
         },
         {
-          "method": "冷冻干燥工作站",
-          "params": {}
+          "method": "磁力搅拌",
+          "params": {
+            "description": "magnetic_stirring"
+          }
         },
         {
-          "method": "紫外光谱工作站",
-          "params": {}
+          "method": "离心纯化",
+          "params": {
+            "description": "gn_centrifugation_workstation"
+          }
         },
         {
-          "method": "荧光光谱工作站",
-          "params": {}
+          "method": "磁力搅拌",
+          "params": {
+            "description": "magnetic_stirring"
+          }
+        },
+        {
+          "method": "离心纯化",
+          "params": {
+            "description": "gn_centrifugation_workstation"
+          }
+        },
+        {
+          "method": "烘干",
+          "params": {
+            "description": "dryer"
+          }
+        },
+        {
+          "method": "容器中转",
+          "params": {
+            "description": "transfer_workstation"
+          }
+        },
+        {
+          "method": "物料回收",
+          "params": {
+            "description": "elec_chem_storage_workstation"
+          }
         }
       ],
       "metadata": {
-        "source": "plan_1 - 5.log",
-        "category": "quantum_dot_synthesis"
+        "source": "5.txt",
+        "category": "carbon_quantum_dots"
       }
     }
   ]
