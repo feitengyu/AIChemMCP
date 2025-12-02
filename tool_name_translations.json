@@ -1,5 +1,4 @@
 {
-  "荧光光谱工作站": "fluorescence_spectroscopy_workstation",
   "磁力搅拌工作站": "magnetic_stirring_workstation",
   "电化学-高温炉": "electrochemical_high_temperature_furnace",
   "多通道固体进样器": "multi_channel_solid_sampler",
@@ -46,7 +45,6 @@
   "吸液工作站": "liquid_handling_workstation",
   "XRD工作站(ALD平台)": "XRD_workstation_ALD_platform",
   "新离心机": "new_centrifuge",
-  "紫外光谱工作站": "UV_spectroscopy_workstation",
   "透析工作站": "dialysis_workstation",
   "液体进样站": "liquid_injection_station",
   "电化学-点样仪": "electrochemical_spotter",

@@ -1,9 +1,8 @@
 === 第 2 次执行计划 ===
-  步骤 1: {'method': '物料站', 'params': {}}
-  步骤 2: {'method': '综合反应平台', 'params': {'description': 'Setup the reaction platform for synthesizing gold nanoparticles using an appropriate reducing agent and stabilizer.'}}
-  步骤 3: {'method': '磁力搅拌工作站', 'params': {'description': 'Ensure thorough mixing of the reactants during the synthesis of gold nanoparticles.'}}
-  步骤 4: {'method': '离心工作站', 'params': {'description': 'Separate the synthesized gold nanoparticles from the reaction mixture.'}}
-  步骤 5: {'method': '纯化工作站', 'params': {'description': 'Purify the gold nanoparticles to remove any unreacted materials or byproducts.'}}
-  步骤 6: {'method': '冷冻干燥工作站', 'params': {'description': 'Dry the purified gold nanoparticles for preservation and analysis.'}}
-  步骤 7: {'method': '紫外光谱工作站', 'params': {'description': 'Analyze the absorbance spectrum of gold nanoparticles to determine their size and concentration.'}}
-  步骤 8: {'method': '荧光光谱工作站', 'params': {'description': 'Further analyze the optical properties of gold nanoparticles using fluorescence spectroscopy.'}}
+  步骤 1: {'method': '物料站', 'params': {'description': 'starting_station'}}
+  步骤 2: {'method': '液站工作站', 'params': {'description': 'liquid_dispensing'}}
+  步骤 3: {'method': '磁力搅拌工作站', 'params': {'description': 'magnetic_stirring'}}
+  步骤 4: {'method': '超声清洗', 'params': {'description': 'ultrasonic_cleaning'}}
+  步骤 5: {'method': '烘干机', 'params': {'description': 'dryer'}}
+  步骤 6: {'method': '离心工作站', 'params': {'description': 'gn_centrifugation_workstation'}}
+  步骤 7: {'method': '光催化', 'params': {'description': 'spectrum_characterization'}}

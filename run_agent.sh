@@ -12,6 +12,10 @@ for i in {1..5}
 do
     echo "=== 第 $i 次执行 ==="
     
+    # 使用grep提取user_goal（适用于简单格式）
+    USER_GOAL=$(grep -o 'user_goal\s*=\s*"[^"]*"' agent.py | head -1 | sed 's/.*"\(.*\)"/\1/')
+    echo "当前user_goal: $USER_GOAL"
+
     # 执行 agent.py 并将输出保存到临时文件
     python agent.py > temp_output_$i.txt 2>&1
     

@@ -1,8 +1,9 @@
 === 第 1 次执行计划 ===
-  步骤 1: {'method': '物料站', 'params': {}}
-  步骤 2: {'method': '综合反应平台', 'params': {'description': 'Prepare the mixture of nanomaterial and organic dye solution for adsorption testing.'}}
-  步骤 3: {'method': '磁力搅拌工作站', 'params': {'description': 'Stir the nanomaterial and dye solution to ensure thorough mixing and contact for adsorption.'}}
-  步骤 4: {'method': '摇床工作站', 'params': {'description': 'Use to ensure continuous mixing and maintain uniform suspension of the nanomaterials in the dye solution throughout the experiment.'}}
-  步骤 5: {'method': '紫外光谱工作站', 'params': {'description': 'Measure the concentration of organic dye in the solution at regular intervals to determine the adsorption efficiency of the nanomaterial.'}}
-  步骤 6: {'method': '离心工作站', 'params': {'description': 'Separate the adsorbed nanomaterials from the dye solution after adsorption experiment is completed.'}}
-  步骤 7: {'method': '纯化工作站', 'params': {'description': 'Purify the separated nanomaterials to remove any remaining dye residue.'}}
+  步骤 1: {'method': '物料站', 'params': {'description': 'starting_station'}}
+  步骤 2: {'method': '液体进样站', 'params': {'description': 'liquid_dispensing'}}
+  步骤 3: {'method': '磁力搅拌工作站', 'params': {'description': 'magnetic_stirring'}}
+  步骤 4: {'method': '超声清洗', 'params': {'description': 'ultrasonic_cleaning'}}
+  步骤 5: {'method': '离心工作站', 'params': {'description': 'gn_centrifugation_workstation'}}
+  步骤 6: {'method': '纯化工作站', 'params': {'description': 'gn_purification_workstation'}}
+  步骤 7: {'method': '烘干机', 'params': {'description': 'dryer'}}
+  步骤 8: {'method': '质谱工作站', 'params': {'description': 'analyze_adsorbed_organic_dye_on_nanomaterials'}}

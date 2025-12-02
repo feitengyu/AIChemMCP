@@ -1,9 +1,12 @@
 === 第 3 次执行计划 ===
   步骤 1: {'method': '物料站', 'params': {}}
-  步骤 2: {'method': '磁力搅拌工作站', 'params': {'description': 'Mix precursor metal salts and base under constant stirring to form a homogeneous solution.'}}
-  步骤 3: {'method': '综合反应平台', 'params': {'description': 'Ensure the complete precipitation of metal hydroxides by controlling the reaction conditions (pH, temperature).'}}
-  步骤 4: {'method': '离心工作站', 'params': {'description': 'Separate the precipitated metal hydroxides from the solution.'}}
-  步骤 5: {'method': '管式炉处理工作站', 'params': {'description': 'Dry and possibly anneal the hydroxide precipitates at appropriate temperatures to form high entropy hydroxides.'}}
-  步骤 6: {'method': '纯化工作站', 'params': {'description': 'Remove any residual impurities from the high entropy hydroxide samples.'}}
-  步骤 7: {'method': 'XRD工作站(ALD平台)', 'params': {'description': 'Characterize the crystal structure of the prepared high entropy hydroxides.'}}
-  步骤 8: {'method': '高通量电化学筛选工作站', 'params': {'description': 'Evaluate the electrocatalytic performance of the high entropy hydroxide samples by testing their activity, stability, and selectivity in electrochemical reactions.'}}
+  步骤 2: {'method': '多通道固体进样器', 'params': {}}
+  步骤 3: {'method': '电化学-配液仪', 'params': {}}
+  步骤 4: {'method': '磁力搅拌工作站', 'params': {}}
+  步骤 5: {'method': '管式炉处理工作站', 'params': {}}
+  步骤 6: {'method': '纯化工作站', 'params': {}}
+  步骤 7: {'method': '超声清洗', 'params': {}}
+  步骤 8: {'method': '冷冻干燥工作站', 'params': {}}
+  步骤 9: {'method': '质谱工作站', 'params': {}}
+  步骤 10: {'method': '电化学-高温炉', 'params': {}}
+  步骤 11: {'method': '单原子仿酶催化平台', 'params': {}}
